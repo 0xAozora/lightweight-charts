@@ -524,7 +524,9 @@ export class PaneWidget implements IDestroyable, MouseEventHandlers {
 			const topColor = model.backgroundTopColor();
 			const bottomColor = model.backgroundBottomColor();
 
-			if (topColor === bottomColor) {
+			if (topColor === '') {
+				ctx.clearRect(0, 0, this._size.w, this._size.h);
+			} else if (topColor === bottomColor) {
 				clearRect(ctx, 0, 0, this._size.w, this._size.h, bottomColor);
 			} else {
 				clearRectWithGradient(ctx, 0, 0, this._size.w, this._size.h, topColor, bottomColor);

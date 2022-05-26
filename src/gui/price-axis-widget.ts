@@ -403,7 +403,9 @@ export class PriceAxisWidget implements IDestroyable {
 			const topColor = model.backgroundTopColor();
 			const bottomColor = model.backgroundBottomColor();
 
-			if (topColor === bottomColor) {
+			if (topColor === '') {
+				ctx.clearRect(0, 0, width, height);
+			} else if (topColor === bottomColor) {
 				clearRect(ctx, 0, 0, width, height, topColor);
 			} else {
 				clearRectWithGradient(ctx, 0, 0, width, height, topColor, bottomColor);

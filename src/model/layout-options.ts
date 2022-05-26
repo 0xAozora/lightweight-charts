@@ -6,6 +6,8 @@ export const enum ColorType {
 	Solid = 'solid',
 	/** Vertical gradient color */
 	VerticalGradient = 'gradient',
+	/** Transparent */
+	Transparent = 'transparent',
 }
 
 /**
@@ -43,10 +45,17 @@ export interface VerticalGradientColor {
 	bottomColor: string;
 }
 
+export interface Transparent {
+	/**
+	 * Type of color.
+	 */
+	type: ColorType.Transparent;
+}
+
 /**
  * Represents the background color of the chart.
  */
-export type Background = SolidColor | VerticalGradientColor;
+export type Background = SolidColor | VerticalGradientColor | Transparent;
 
 /** Represents layout options */
 export interface LayoutOptions {

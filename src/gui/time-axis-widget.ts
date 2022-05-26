@@ -296,7 +296,12 @@ export class TimeAxisWidget implements MouseEventHandlers, IDestroyable {
 
 	private _drawBackground(ctx: CanvasRenderingContext2D, pixelRatio: number): void {
 		drawScaled(ctx, pixelRatio, () => {
-			clearRect(ctx, 0, 0, this._size.w, this._size.h, this._chart.model().backgroundBottomColor());
+			const color = this._chart.model().backgroundBottomColor();
+			if (color === '') {
+				ctx.clearRect(0, 0, this._size.w, this._size.h);
+			} else {
+				clearRect(ctx, 0, 0, this._size.w, this._size.h, color);
+			}
 		});
 	}
 

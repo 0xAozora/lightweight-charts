@@ -126,7 +126,12 @@ export class PriceAxisStub implements IDestroyable {
 
 	private _drawBackground(ctx: CanvasRenderingContext2D, pixelRatio: number): void {
 		drawScaled(ctx, pixelRatio, () => {
-			clearRect(ctx, 0, 0, this._size.w, this._size.h, this._bottomColor());
+			const color = this._bottomColor();
+			if (color === '') {
+				ctx.clearRect(0, 0, this._size.w, this._size.h);
+			} else {
+				clearRect(ctx, 0, 0, this._size.w, this._size.h, color);
+			}
 		});
 	}
 

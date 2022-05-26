@@ -905,6 +905,8 @@ export class ChartModel implements IDestroyable {
 			return side === BackgroundColorSide.Top ?
 				layoutOptions.background.topColor :
 				layoutOptions.background.bottomColor;
+		} else if (layoutOptions.background.type === ColorType.Transparent) {
+			return '';
 		}
 
 		return layoutOptions.background.color;
